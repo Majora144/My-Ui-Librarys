@@ -1,6 +1,3 @@
-if game.CoreGui:FindFirstChild("Toggle") then
-	game.CoreGui.MarkBeatsIsGay:Destroy()
-end
 
 local Library = {}
 
