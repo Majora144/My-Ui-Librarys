@@ -5,6 +5,7 @@ function Library:Window()
 	local Toggle = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
 	local UICorner_3 = Instance.new("UICorner")
+	local Credits = Instance.new("TextLabel")
 	Toggle.Name = "Toggle"
 	Toggle.Parent = game.CoreGui
 	Toggle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -18,6 +19,17 @@ function Library:Window()
 	UICorner_3.Parent = Frame
 	Frame.Active = true
 	Frame.Draggable = true
+	
+	Credits.Name = "Credits"
+	Credits.Parent = Frame
+	Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Credits.BackgroundTransparency = 1.000
+	Credits.Position = UDim2.new(0, 0, 0.832167804, 0)
+	Credits.Size = UDim2.new(0, 273, 0, 24)
+	Credits.Font = Enum.Font.GothamSemibold
+	Credits.Text = "Made By Majora#0001"
+	Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Credits.TextSize = 25.000
 	
 	local ToggleHolder = {}
 	
