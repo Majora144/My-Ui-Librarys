@@ -63,12 +63,12 @@ function Library:Window(name)
     end
     end)
 
-    Name.Name = name
+    Name.Name = "name"
     Name.Parent = Top
     Name.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
     Name.BackgroundTransparency = 1.000
     Name.Size = UDim2.new(0, 464, 0, 34)
-    Name.Text = ""
+    Name.Text = name
     Name.Font = Enum.Font.SourceSansBold
     Name.TextColor3 = Color3.fromRGB(77, 77, 77)
     Name.TextSize = 25.000
