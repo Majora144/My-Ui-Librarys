@@ -168,6 +168,24 @@ function Library:Window(name)
         Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
         Toggle.TextSize = 14.000
         
+	Toggle.MouseEnter:Connect(function()
+            game:GetService("TweenService"):Create(Toggle,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(55, 55, 55)}):Play()
+        end)
+        Toggle.MouseLeave:Connect(function()
+            game:GetService("TweenService"):Create(Toggle,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(44,44,44)}):Play()
+        end)
+	 local toggled = false
+        Toggle.MouseButton1Down:Connect(function()
+            if toggled == true then
+                toggled = not toggled
+                pcall(callback, toggled)
+                game:GetService("TweenService"):Create(Status, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(77,77,77)} ):Play()
+            elseif toggled == false then
+                toggled = not toggled
+                pcall(callback, toggled)
+                game:GetService("TweenService"):Create(Status, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(11, 232, 129)} ):Play()
+            end
+        end)
         Text.Name = "Text"
         Text.Parent = Toggle
         Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -190,28 +208,7 @@ function Library:Window(name)
         UICorner_2.CornerRadius = UDim.new(0, 10)
         UICorner_2.Parent = Status
         
-        UICorner_3.Parent = Toggle
-
-        local toggled = false
-	
-        Toggle.MouseButton1Down:Connect(function()
-            if toggled == true then
-                toggled = not toggled
-                pcall(callback, toggled)
-                game:GetService("TweenService"):Create(Status, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(77,77,77)} ):Play()
-            elseif toggled == false then
-                toggled = not toggled
-                pcall(callback, toggled)
-                game:GetService("TweenService"):Create(Status, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(11, 232, 129)} ):Play()
-            end
-        end)
-        
-        Toggle.MouseEnter:Connect(function()
-            game:GetService("TweenService"):Create(Toggle,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(55, 55, 55)}):Play()
-        end)
-        Toggle.Parent.MouseLeave:Connect(function()
-            game:GetService("TweenService"):Create(Toggle,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(44,44,44)}):Play()
-        end)        
+        UICorner_3.Parent = Toggle      
     end
     return Holder
 end
