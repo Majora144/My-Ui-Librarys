@@ -69,7 +69,7 @@ function Library:Window(name)
     Name.BackgroundTransparency = 1.000
     Name.Size = UDim2.new(0, 464, 0, 34)
     Name.Text = name
-    Name.Font = Enum.Font.SourceSansBold
+    Name.Font = Enum.Font.Gotham
     Name.TextColor3 = Color3.fromRGB(77, 77, 77)
     Name.TextSize = 25.000
 
@@ -135,7 +135,7 @@ function Library:Window(name)
         Button.Size = UDim2.new(0, 441, 0, 35)
         Button.AutoButtonColor = false
         Button.Text = name
-        Button.Font = Enum.Font.SourceSans
+        Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(77, 77, 77)
         Button.TextSize = 25.000
         Button.MouseEnter:Connect(function()
@@ -164,7 +164,7 @@ function Library:Window(name)
         Toggle.Size = UDim2.new(0, 462, 0, 50)
         Toggle.AutoButtonColor = false
         Toggle.Text = ""
-        Toggle.Font = Enum.Font.SourceSans
+        Toggle.Font = Enum.Font.Gotham
         Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
         Toggle.TextSize = 14.000
         
@@ -193,7 +193,7 @@ function Library:Window(name)
         Text.Position = UDim2.new(0.0138515206, 0, -0.0190473292, 0)
         Text.Size = UDim2.new(0, 112, 0, 37)
         Text.Text = name
-        Text.Font = Enum.Font.SourceSans
+        Text.Font = Enum.Font.Gotham
         Text.TextColor3 = Color3.fromRGB(88, 88, 88)
         Text.TextSize = 25.000
         Text.TextXAlignment = Enum.TextXAlignment.Left
