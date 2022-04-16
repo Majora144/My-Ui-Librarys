@@ -6,6 +6,7 @@ local Library = {}
 
 function Library:Window(name)
     local Sex = Instance.new("ScreenGui")
+    syn.protect_gui(Sex)
     local Top = Instance.new("Frame")
     local Name = Instance.new("TextLabel")
     local close = Instance.new("ImageButton")
