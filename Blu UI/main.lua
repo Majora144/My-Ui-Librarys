@@ -300,6 +300,59 @@ function Majora:Window(name)
 
         end
 
+        function StuffHandler:Label(name)
+            local Label = Instance.new("TextLabel")
+            local UICorner = Instance.new("UICorner")
+            
+            Label.Name = "Label"
+            Label.Parent = newPage
+            Label.Active = true
+            Label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            Label.BorderSizePixel = 0
+            Label.Selectable = true
+            Label.Size = UDim2.new(0, 500, 0, 50)
+            Label.Text = name
+            Label.Font = Enum.Font.Gotham
+            Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Label.TextSize = 25.000
+            
+            UICorner.Parent = Label
+        end
+
+        function StuffHandler:Destroy(name)
+            local DestroyButton = Instance.new("TextButton")
+            local UICorner = Instance.new("UICorner")
+    
+            DestroyButton.Name = "Button"
+            DestroyButton.Parent = newPage
+            DestroyButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            DestroyButton.BorderSizePixel = 0
+            DestroyButton.Size = UDim2.new(0, 500, 0, 50)
+            DestroyButton.AutoButtonColor = false
+            DestroyButton.Text = name
+            DestroyButton.Font = Enum.Font.Gotham
+            DestroyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+            DestroyButton.TextSize = 25.000
+            DestroyButton.MouseEnter:Connect(function()
+                game:GetService("TweenService"):Create(DestroyButton,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(45,45,45)}):Play()
+            end)
+            
+            DestroyButton.MouseLeave:Connect(function()
+                game:GetService("TweenService"):Create(DestroyButton,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(30,30,30)}):Play()
+            end)
+            
+            DestroyButton.MouseButton1Click:Connect(function()
+                game:GetService("TweenService"):Create(DestroyButton,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(52, 152, 219)}):Play()
+                wait(0.15)
+                game:GetService("TweenService"):Create(DestroyButton,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(30,30,30)}):Play()
+                wait(0.15)
+                game.CoreGui.UI:Destroy()
+            end)
+
+            
+            UICorner.Parent = DestroyButton
+        end
+
         return StuffHandler
     end
 
