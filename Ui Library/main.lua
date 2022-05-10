@@ -4,7 +4,7 @@ end
 
 local Library = {}
 
-function Library:CreateWindow(title)
+function Library:CreateWindow()
     local NinjaLegendsUI = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
@@ -97,9 +97,10 @@ function Library:CreateWindow(title)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.Size = UDim2.new(0, 110, 0, 42)
     TextLabel.Font = Enum.Font.GothamBold
-    TextLabel.Text = title
+    TextLabel.Text = "Ninja Legends 2 & 3"
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.TextSize = 16
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
     TextLabel.TextWrapped = true
 
     MainCorner.CornerRadius = UDim.new(0, 3)
@@ -425,7 +426,8 @@ function Library:CreateWindow(title)
     pcall(function()
         callback(Value)
     end)
-    SliderInner.Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)
+    local SliderTween =  game.TweenService:Create(SliderInner,TweenInfo.new(.1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)})
+    SliderTween:Play()
     moveconnection = mouse.Move:Connect(function()
         SliderValue.Text = Value
         Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))
@@ -434,7 +436,7 @@ function Library:CreateWindow(title)
             callback(Value)
             SliderValue.Text = Value
         end)
-        SliderInner.Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)
+        SliderTween:Play()
     end)
     releaseconnection = uis.InputEnded:Connect(function(Mouse)
         if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -445,7 +447,7 @@ function Library:CreateWindow(title)
                 callback(Value)
                 SliderValue.Text = Value
             end)
-            SliderInner.Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)
+            SliderTween:Play()
             moveconnection:Disconnect()
             releaseconnection:Disconnect()
         end
@@ -461,3 +463,5 @@ end)
 end
 
 return Library
+
+
