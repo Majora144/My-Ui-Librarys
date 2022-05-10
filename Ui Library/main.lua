@@ -297,6 +297,7 @@ function Library:CreateWindow()
             Info.Position = UDim2.new(0.0220048893, 0, 0.0705950037, 0)
             Info.Size = UDim2.new(0, 123, 0, 32)
             Info.Font = Enum.Font.GothamSemibold
+            Info.Text = text
             Info.TextColor3 = Color3.fromRGB(255, 255, 255)
             Info.TextSize = 16.000
             Info.TextXAlignment = Enum.TextXAlignment.Left
@@ -461,6 +462,8 @@ end)
     return TabTable
 end
 
-
-
 return Library
+
+
+
+
