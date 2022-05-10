@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet(https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua,true))() -- << Imports The Ui >> --
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))() -- << Imports The Ui >> --
 
 local Window = Library:CreateWindow("Title") -- << "Title" == Title >> --
 
