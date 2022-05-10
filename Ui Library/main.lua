@@ -426,8 +426,7 @@ function Library:CreateWindow()
     pcall(function()
         callback(Value)
     end)
-    local SliderTween =  game.TweenService:Create(SliderInner,TweenInfo.new(.1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)})
-    SliderTween:Play()
+    game.TweenService:Create(SliderInner,TweenInfo.new(.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
     moveconnection = mouse.Move:Connect(function()
         SliderValue.Text = Value
         Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))
@@ -436,7 +435,7 @@ function Library:CreateWindow()
             callback(Value)
             SliderValue.Text = Value
         end)
-        SliderTween:Play()
+        game.TweenService:Create(SliderInner,TweenInfo.new(.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
     end)
     releaseconnection = uis.InputEnded:Connect(function(Mouse)
         if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -447,7 +446,7 @@ function Library:CreateWindow()
                 callback(Value)
                 SliderValue.Text = Value
             end)
-            SliderTween:Play()
+            game.TweenService:Create(SliderInner,TweenInfo.new(.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
             moveconnection:Disconnect()
             releaseconnection:Disconnect()
         end
