@@ -4,7 +4,7 @@ end
 
 local Library = {}
 
-function Library:CreateWindow()
+function Library:CreateWindow(text)
     local NinjaLegendsUI = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
@@ -97,10 +97,9 @@ function Library:CreateWindow()
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.Size = UDim2.new(0, 110, 0, 42)
     TextLabel.Font = Enum.Font.GothamBold
-    TextLabel.Text = "Ninja Legends 2 & 3"
+    TextLabel.Text = text
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
+    TextLabel.TextSize = 16
     TextLabel.TextWrapped = true
 
     MainCorner.CornerRadius = UDim.new(0, 3)
@@ -296,8 +295,8 @@ function Library:CreateWindow()
             Info.BackgroundTransparency = 1.000
             Info.Position = UDim2.new(0.0220048893, 0, 0.0705950037, 0)
             Info.Size = UDim2.new(0, 123, 0, 32)
-            Info.Font = Enum.Font.GothamSemibold
             Info.Text = text
+            Info.Font = Enum.Font.GothamSemibold
             Info.TextColor3 = Color3.fromRGB(255, 255, 255)
             Info.TextSize = 16.000
             Info.TextXAlignment = Enum.TextXAlignment.Left
