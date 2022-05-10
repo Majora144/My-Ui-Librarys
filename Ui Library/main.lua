@@ -99,8 +99,8 @@ function Library:CreateWindow(title)
     TextLabel.Font = Enum.Font.GothamBold
     TextLabel.Text = title
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
+    TextLabel.TextScaled = false
+    TextLabel.TextSize = 16
     TextLabel.TextWrapped = true
 
     MainCorner.CornerRadius = UDim.new(0, 3)
