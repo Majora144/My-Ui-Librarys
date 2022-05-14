@@ -180,7 +180,7 @@ function Library:CreateWindow(text)
             Page.Visible = true
             Page.Transparency = 0
             game.TweenService:Create(TabButton,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{
-                TextColor3 = Color3.fromRGB(255,255,255)
+                TextColor3 = Color3.fromRGB(88,88,88)
             }):Play()
         end
 
@@ -193,12 +193,12 @@ function Library:CreateWindow(text)
             for i,v in next, Tabs:GetChildren() do
                 if v:IsA("TextButton") then
                     game.TweenService:Create(v,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{
-                        TextColor3 = Color3.fromRGB(88, 88, 88)
+                        TextColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
                 end
             end
             game.TweenService:Create(TabButton,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{
-                TextColor3 = Color3.fromRGB(255,255,255)
+                TextColor3 = Color3.fromRGB(88,88,88)
             }):Play()
         end)
 
