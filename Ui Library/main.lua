@@ -3,14 +3,14 @@
 	Draggable script i used: https://devforum.roblox.com/t/draggable-property-is-hidden-on-gui-objects/107689/5
 ]]
 
-if game.CoreGui:FindFirstChild("KEK") then
-    game.CoreGui.KEK:Destroy()
+if game.CoreGui:FindFirstChild("NinjaLegendsUI") then
+    game.CoreGui.NinjaLegendsUI:Destroy()
 end
 
 local Library = {flags = {}}
 
 function Library:CreateWindow(options)
-    local MajoraLibrary = Instance.new("ScreenGui")
+    local NinjaLegendsUI = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
     local Tabs = Instance.new("Frame")
@@ -23,9 +23,9 @@ function Library:CreateWindow(options)
     local PageCorner = Instance.new("UICorner")
     local PageFolder = Instance.new("Folder")
 
-    MajoraLibrary.Name = "KEK"
-    MajoraLibrary.Parent = game.CoreGui
-    MajoraLibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    NinjaLegendsUI.Name = "NinjaLegendsUI"
+    NinjaLegendsUI.Parent = game.CoreGui
+    NinjaLegendsUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     Main.Name = "Main"
     Main.Parent = NinjaLegendsUI
@@ -438,7 +438,7 @@ function Library:CreateWindow(options)
             SliderButton.MouseButton1Down:Connect(function()
             Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min)) or 0
             pcall(function()
-                pcall(options.Callback,Value)
+                pcall(options.callback,Value)
             end)
             game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
             moveconnection = mouse.Move:Connect(function()
@@ -475,4 +475,37 @@ function Library:CreateWindow(options)
     return TabTable
 end
 
+
+local win = Library:CreateWindow({
+    Title = "Title"
+})
+
+
+local tab = win:AddTab({
+    Text = "Text"
+})
+
+tab:AddButton({
+    Text = "Button",
+    Callback = function()
+        
+    end
+})
+
+tab:AddToggle({
+    Text = "Toggle",
+    flag = "Tog",
+    Callback = function()
+        
+    end
+})
+
+tab:AddSlider({
+    Text = "Slider",
+    Min = "16",
+    Max = "50",
+    Callback = function()
+        
+    end
+})
 return Library
