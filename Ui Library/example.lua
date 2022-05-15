@@ -1,17 +1,37 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))() -- << Imports The Ui >> --
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))()
 
-local Window = Library:CreateWindow("Title") -- << "Title" == Title >> --
+local win = Library:CreateWindow({
+    Title = "Title"
+})
 
-local Tab = Window:AddTab("Tab") --<< "Tab" == Tab Text >>--
 
-Tab:AddButton("Button",function() -- << "Button" == Button Text >> --
-    print("pressed")
-end)
+local tab = win:AddTab({
+    Text = "Tab"
+})
 
-Tab:AddToggle("Toggle",function(state) -- << "Toggle" == Toggle Text, state returns the value of the toggle >> --
-  print("toggle state is",v)    
-end)
+local tab2 = win:AddTab({
+    Text = "Tab 2"
+})
 
-Tab:AddSlider("Slider",0,100,function(v) --<< "Slider" == Slider Text, 0 == minvalue, 100 = maxvalue, v returns the value of the slide >> --
-    print("value",v)
-end)
+tab:AddButton({
+    Text = "Button",
+    callback = function()
+        print("Clicked")
+    end
+})
+
+tab:AddToggle({
+    Text = "Toggle",
+    callback = function(bool)
+        print(bool)
+    end
+})
+
+tab:AddSlider({
+    Text = "Slider",
+    Min = "0",
+    Max = "100",
+    callback = function(Value)
+        print(Value)
+    end
+})
