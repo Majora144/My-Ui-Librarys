@@ -9,19 +9,18 @@ local tab = win:AddTab({
     Text = "Text"
 })
 
-
 tab:AddButton({
     Text = "Button",
     callback = function()
-        print("w")
+        
     end
 })
 
 tab:AddToggle({
     Text = "Toggle",
-    flag = "Toggle",
+    flag = "Tog",
     Callback = function()
-        print("LOL")
+        
     end
 })
 
