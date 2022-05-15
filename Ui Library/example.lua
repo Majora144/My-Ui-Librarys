@@ -11,7 +11,7 @@ local tab = win:AddTab({
 
 tab:AddButton({
     Text = "Button",
-    callback = function()
+    Callback = function()
         
     end
 })
@@ -28,7 +28,7 @@ tab:AddSlider({
     Text = "Slider",
     Min = "16",
     Max = "50",
-    callback = function()
+    Callback = function()
         
     end
 })
