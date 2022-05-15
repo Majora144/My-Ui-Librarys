@@ -4,7 +4,7 @@ end
 
 local Library = {}
 
-function Library:CreateWindow(text)
+function Library:CreateWindow(options)
     local NinjaLegendsUI = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
@@ -97,7 +97,7 @@ function Library:CreateWindow(text)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.Size = UDim2.new(0, 110, 0, 42)
     TextLabel.Font = Enum.Font.GothamBold
-    TextLabel.Text = text
+    TextLabel.Text = options.Title
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.TextSize = 16
     TextLabel.TextWrapped = true
@@ -124,7 +124,7 @@ function Library:CreateWindow(text)
 
     local first = true
 
-    function TabTable:AddTab(text)
+    function TabTable:AddTab(options)
         local TabButton = Instance.new("TextButton")
         local UICorner = Instance.new("UICorner")
         local Page = Instance.new("ScrollingFrame")
@@ -138,8 +138,8 @@ function Library:CreateWindow(text)
         TabButton.Size = UDim2.new(0, 99, 0, 26)
         TabButton.AutoButtonColor = false
         TabButton.Font = Enum.Font.GothamSemibold
-        TabButton.Text = text
-        TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabButton.Text = options.Text
+        TabButton.TextColor3 = Color3.fromRGB(88,88,88)
         TabButton.TextSize = 14.000
         TabButton.MouseButton1Click:Connect(function()
             local TabTween1 = game:GetService("TweenService"):Create(script.Parent,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{BackgroundColor3 = Color3.fromRGB(66,66,66)})
@@ -204,7 +204,7 @@ function Library:CreateWindow(text)
 
         local ElementTable = {}
 
-        function ElementTable:AddButton(text,callback)
+        function ElementTable:AddButton(options)
             local Button = Instance.new("TextButton")
             local ButtonCorner = Instance.new("UICorner")
             
@@ -216,9 +216,10 @@ function Library:CreateWindow(text)
             Button.Size = UDim2.new(0, 409, 0, 35)
             Button.AutoButtonColor = false
             Button.Font = Enum.Font.GothamSemibold
-            Button.Text = text
+            Button.Text = options.Text
             Button.TextColor3 = Color3.fromRGB(255, 255, 255)
             Button.TextSize = 16.000
+
             Button.MouseEnter:Connect(function()
 
                 game.TweenService:Create(Button,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{
@@ -236,7 +237,7 @@ function Library:CreateWindow(text)
             end)
             
             Button.MouseButton1Click:Connect(function()
-                pcall(callback)
+                pcall(options.callback)
                 game.TweenService:Create(Button,TweenInfo.new(.1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{
                     TextSize = 8
                 }):Play()
@@ -254,7 +255,7 @@ function Library:CreateWindow(text)
             ButtonCorner.Parent = Button
         end
 
-        function ElementTable:AddToggle(text,callback)
+        function ElementTable:AddToggle(options)
             local Toggle = Instance.new("TextButton")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleState = Instance.new("Frame")
@@ -294,7 +295,7 @@ function Library:CreateWindow(text)
             Info.BackgroundTransparency = 1.000
             Info.Position = UDim2.new(0.0220048893, 0, 0.0705950037, 0)
             Info.Size = UDim2.new(0, 123, 0, 32)
-            Info.Text = text
+            Info.Text = options.Text
             Info.Font = Enum.Font.GothamSemibold
             Info.TextColor3 = Color3.fromRGB(255, 255, 255)
             Info.TextSize = 16.000
@@ -313,18 +314,18 @@ function Library:CreateWindow(text)
                 Toggle.MouseButton1Click:Connect(function()
                     if not toggled then
                         toggled = not toggled
-                        pcall(callback, toggled)
+                        pcall(options.callback, toggled)
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(66,159,221)}):Play()
                     elseif toggled then
                         toggled = not toggled
-                        pcall(callback, toggled)
+                        pcall(options.callback, toggled)
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(77,77,77)}):Play()
                     end
                 end)
             
         end
 
-        function ElementTable:AddSlider(text, minvalue, maxvalue, callback)
+        function ElementTable:AddSlider(options)
             local Slider = Instance.new("Frame")
             local SliderCorner = Instance.new("UICorner")
             local SliderButton = Instance.new("TextButton")
@@ -404,7 +405,7 @@ function Library:CreateWindow(text)
             SliderText.Position = UDim2.new(0.0220048893, 0, 0, 0)
             SliderText.Size = UDim2.new(0, 132, 0, 43)
             SliderText.Font = Enum.Font.GothamSemibold
-            SliderText.Text = text
+            SliderText.Text = options.Text
             SliderText.TextColor3 = Color3.fromRGB(255, 255, 255)
             SliderText.TextSize = 16.000
             SliderText.TextXAlignment = Enum.TextXAlignment.Left
@@ -420,37 +421,37 @@ function Library:CreateWindow(text)
             SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
             SliderValue.TextSize = 16.000
 
-    SliderButton.MouseButton1Down:Connect(function()
-    Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(minvalue)) or 0
-    pcall(function()
-        callback(Value)
-    end)
-    game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
-    moveconnection = mouse.Move:Connect(function()
-        SliderValue.Text = Value
-        Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))
-        SliderValue.Text = Value
-        pcall(function()
-            callback(Value)
-            SliderValue.Text = Value
-        end)
-        game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
-    end)
-    releaseconnection = uis.InputEnded:Connect(function(Mouse)
-        if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
-            SliderValue.Text = Value
-            Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))
-            SliderValue.Text = Value
+            SliderButton.MouseButton1Down:Connect(function()
+            Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min)) or 0
             pcall(function()
-                callback(Value)
-                SliderValue.Text = Value
+                pcall(options.callback,Value)
             end)
             game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
-            moveconnection:Disconnect()
-            releaseconnection:Disconnect()
-        end
-    end)
-end)
+            moveconnection = mouse.Move:Connect(function()
+                SliderValue.Text = Value
+                Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min))
+                SliderValue.Text = Value
+                pcall(function()
+                    pcall(options.callback,Value)
+                    SliderValue.Text = Value
+                end)
+                game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
+            end)
+            releaseconnection = uis.InputEnded:Connect(function(Mouse)
+                if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+                    SliderValue.Text = Value
+                    Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min))
+                    SliderValue.Text = Value
+                    pcall(function()
+                        pcall(options.callback,Value)
+                        SliderValue.Text = Value
+                    end)
+                    game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
+                    moveconnection:Disconnect()
+                    releaseconnection:Disconnect()
+                end
+            end)
+        end)
 
         end
 
@@ -461,6 +462,3 @@ end)
 end
 
 return Library
-
-
-
