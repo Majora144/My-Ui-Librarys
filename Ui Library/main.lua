@@ -3,14 +3,14 @@
 	Draggable script i used: https://devforum.roblox.com/t/draggable-property-is-hidden-on-gui-objects/107689/5
 ]]
 
-if game.CoreGui:FindFirstChild("NinjaLegendsUI") then
-    game.CoreGui.NinjaLegendsUI:Destroy()
+if game.CoreGui:FindFirstChild("KEK") then
+    game.CoreGui.KEK:Destroy()
 end
 
 local Library = {flags = {}}
 
 function Library:CreateWindow(options)
-    local NinjaLegendsUI = Instance.new("ScreenGui")
+    local MajoraLibrary = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
     local Tabs = Instance.new("Frame")
@@ -23,9 +23,9 @@ function Library:CreateWindow(options)
     local PageCorner = Instance.new("UICorner")
     local PageFolder = Instance.new("Folder")
 
-    NinjaLegendsUI.Name = "NinjaLegendsUI"
-    NinjaLegendsUI.Parent = game.CoreGui
-    NinjaLegendsUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    MajoraLibrary.Name = "KEK"
+    MajoraLibrary.Parent = game.CoreGui
+    MajoraLibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     Main.Name = "Main"
     Main.Parent = NinjaLegendsUI
