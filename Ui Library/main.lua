@@ -1,3 +1,8 @@
+--[[
+	Created by: Majora#0001
+	Draggable script i used: https://devforum.roblox.com/t/draggable-property-is-hidden-on-gui-objects/107689/5
+]]
+
 if game.CoreGui:FindFirstChild("NinjaLegendsUI") then
     game.CoreGui.NinjaLegendsUI:Destroy()
 end
