@@ -2,7 +2,7 @@ if game.CoreGui:FindFirstChild("NinjaLegendsUI") then
     game.CoreGui.NinjaLegendsUI:Destroy()
 end
 
-local Library = {}
+local Library = {flags = {}}
 
 function Library:CreateWindow(options)
     local NinjaLegendsUI = Instance.new("ScreenGui")
@@ -256,12 +256,17 @@ function Library:CreateWindow(options)
         end
 
         function ElementTable:AddToggle(options)
+            local callback = options.Callback or function() end
+            local location = Library.flags
+            local flag = options.flag
+            location[flag] = false
+
             local Toggle = Instance.new("TextButton")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleState = Instance.new("Frame")
             local ToggleStateCorner = Instance.new("UICorner")
             local Info = Instance.new("TextLabel")
-
+           
             Toggle.Name = "Toggle"
             Toggle.Parent = Page
             Toggle.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
@@ -300,8 +305,8 @@ function Library:CreateWindow(options)
             Info.TextColor3 = Color3.fromRGB(255, 255, 255)
             Info.TextSize = 16.000
             Info.TextXAlignment = Enum.TextXAlignment.Left
-            
-            
+        
+
                 Toggle.MouseEnter:Connect(function()
                     game.TweenService:Create(Toggle,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{BackgroundColor3 = Color3.fromRGB(37,37,37)}):Play()
                 end)
@@ -314,16 +319,19 @@ function Library:CreateWindow(options)
                 Toggle.MouseButton1Click:Connect(function()
                     if not toggled then
                         toggled = not toggled
-                        pcall(options.callback, toggled)
+                        location[flag] = not location[flag]
+                        
+                        callback(location[flag])
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(66,159,221)}):Play()
                     elseif toggled then
                         toggled = not toggled
-                        pcall(options.callback, toggled)
+                        location[flag] = not location[flag]
+                        
+                        callback(location[flag])
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(77,77,77)}):Play()
                     end
                 end)
-            
-        end
+            end
 
         function ElementTable:AddSlider(options)
             local Slider = Instance.new("Frame")
