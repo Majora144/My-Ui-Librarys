@@ -1,37 +1,35 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))()
 
-local win = Library:CreateWindow({
+local win = library:CreateWindow({
     Title = "Title"
 })
 
 
 local tab = win:AddTab({
-    Text = "Tab"
+    Text = "Text"
 })
 
-local tab2 = win:AddTab({
-    Text = "Tab 2"
-})
 
 tab:AddButton({
     Text = "Button",
     callback = function()
-        print("Clicked")
+        print("w")
     end
 })
 
 tab:AddToggle({
     Text = "Toggle",
-    callback = function(bool)
-        print(bool)
+    flag = "Toggle",
+    Callback = function()
+        print("LOL")
     end
 })
 
 tab:AddSlider({
     Text = "Slider",
-    Min = "0",
-    Max = "100",
-    callback = function(Value)
-        print(Value)
+    Min = "16",
+    Max = "50",
+    callback = function()
+        
     end
 })
