@@ -242,7 +242,7 @@ function Library:CreateWindow(options)
             end)
             
             Button.MouseButton1Click:Connect(function()
-                pcall(options.callback)
+                pcall(options.Callback)
                 game.TweenService:Create(Button,TweenInfo.new(.1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{
                     TextSize = 8
                 }):Play()
@@ -438,7 +438,7 @@ function Library:CreateWindow(options)
             SliderButton.MouseButton1Down:Connect(function()
             Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min)) or 0
             pcall(function()
-                pcall(options.callback,Value)
+                pcall(options.Callback,Value)
             end)
             game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
             moveconnection = mouse.Move:Connect(function()
@@ -446,7 +446,7 @@ function Library:CreateWindow(options)
                 Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min))
                 SliderValue.Text = Value
                 pcall(function()
-                    pcall(options.callback,Value)
+                    pcall(options.Callback,Value)
                     SliderValue.Text = Value
                 end)
                 game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
@@ -457,7 +457,7 @@ function Library:CreateWindow(options)
                     Value = math.floor((((tonumber(options.Max) - tonumber(options.Min)) / 246) * SliderInner.AbsoluteSize.X) + tonumber(options.Min))
                     SliderValue.Text = Value
                     pcall(function()
-                        pcall(options.callback,Value)
+                        pcall(options.Callback,Value)
                         SliderValue.Text = Value
                     end)
                     game.TweenService:Create(SliderInner,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, 246), 0, 22)}):Play()
