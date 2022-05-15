@@ -1,6 +1,6 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Majora144/My-Ui-Librarys/main/Ui%20Library/main.lua",true))()
 
-local win = library:CreateWindow({
+local win = Library:CreateWindow({
     Title = "Title"
 })
 
@@ -12,7 +12,7 @@ local tab = win:AddTab({
 tab:AddButton({
     Text = "Button",
     Callback = function()
-        
+        print("A")
     end
 })
 
