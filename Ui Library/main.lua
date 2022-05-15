@@ -256,9 +256,9 @@ function Library:CreateWindow(options)
         end
 
         function ElementTable:AddToggle(options)
-            local callback = options.Callback or function() end
             local location = Library.flags
             local flag = options.flag
+            local callback = options.Callback
             location[flag] = false
 
             local Toggle = Instance.new("TextButton")
@@ -319,17 +319,18 @@ function Library:CreateWindow(options)
                 Toggle.MouseButton1Click:Connect(function()
                     if not toggled then
                         toggled = not toggled
+                        
                         location[flag] = not location[flag]
                         
-                        callback(location[flag])
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(66,159,221)}):Play()
                     elseif toggled then
                         toggled = not toggled
+
                         location[flag] = not location[flag]
-                        
-                        callback(location[flag])
+
                         game.TweenService:Create(ToggleState,TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(77,77,77)}):Play()
                     end
+                    spawn(callback)
                 end)
             end
 
