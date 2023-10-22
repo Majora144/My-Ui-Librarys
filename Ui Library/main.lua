@@ -1,5 +1,5 @@
 --[[
-	Created by: Majora#0001
+	Created by: Majora#0001, new discord majora5
 	Draggable script i used: https://devforum.roblox.com/t/draggable-property-is-hidden-on-gui-objects/107689/5
 ]]
 
